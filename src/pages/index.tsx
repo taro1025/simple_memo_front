@@ -19,13 +19,7 @@ const Index: NextPage = () => {
 
     // going to fetch data
     // {
-    //     permanentMemos: {
-    //         memo: {
-    //             title: 'fdlfd'
-    //             text: 'fdjflds'
-    //          }
-    //     }
-    //     currentMemos: {
+    //    currentMemos: {
     //         memo: {
     //          title: 'fdlfd'
     //          text: 'fdjflds'
