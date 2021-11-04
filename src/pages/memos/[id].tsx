@@ -1,8 +1,11 @@
 import {NextPage} from 'next'
+import {Layout} from "../../components/layout";
 
 const Memo: NextPage = () => {
     return (
-        <h2>Memo1</h2>
+        <Layout>
+            <h2>Memo1</h2>
+        </Layout>
     )
 }
 

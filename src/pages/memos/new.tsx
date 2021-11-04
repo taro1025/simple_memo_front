@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import {useStateWithStorage} from "../../hooks/use_state_with_storage";
 import {putMemo} from '../../indexedDB/memos'
 import {useState} from "react";
+import {Layout} from "../../components/layout";
 
 //多分、MemoはComponentsに切り分けて、[id].js, new.jsで使えばいい気がする。
 const NewMemo: NextPage = () => {
@@ -22,16 +23,18 @@ const NewMemo: NextPage = () => {
 
     return (
         <>
-            <textarea
-                className={style.memo}
-                value={memo}
-                onChange={(event) => setMemo(event.target.value)}
-            />
-            <Button onClick={handleClickSubmit}>保存する</Button>
-            <Button onClick={handleClickSavePermanent}>
-                {isPermanent ? "保持解除" : "永久保持" }
-            </Button>
-            <Link href="/"><Button>＜メモ一覧</Button></Link>
+            <Layout>
+                <textarea
+                    className={style.memo}
+                    value={memo}
+                    onChange={(event) => setMemo(event.target.value)}
+                />
+                <Button onClick={handleClickSubmit}>保存する</Button>
+                <Button onClick={handleClickSavePermanent}>
+                    {isPermanent ? "保持解除" : "永久保持"}
+                </Button>
+                <Link href="/"><Button>＜メモ一覧</Button></Link>
+            </Layout>
         </>
     )
 }

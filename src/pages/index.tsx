@@ -1,7 +1,9 @@
 import {NextPage} from 'next'
 import {MemoCard} from '../components/MemoCard'
 import Link from "next/link"
+import Head from 'next/head'
 import {useState} from "react"
+import {Layout} from '../components/layout'
 
 interface MemoInterface {
     title: string;
@@ -40,33 +42,35 @@ const Index: NextPage = () => {
 
     return (
         <>
-            {
-                isCurrentMemoIndex ? (
-                    <>
-                        <h2 onClick={handleSwitch}>メモ一覧</h2>
+            <Layout>
+                {
+                    isCurrentMemoIndex ? (
+                        <>
+                            <h2 onClick={handleSwitch}>メモ一覧</h2>
 
-                        <Link href="/memos/1">
-                            <a><MemoCard
-                                title="title 今日の反省"
-                                date="日付 2012/12/12"
-                                leadSentence="read 今日は..."
-                            /></a>
-                        </Link>
-                    </>
-                ) : (
-                    <>
-                        <h2 onClick={handleSwitch}>過去３０日間のメモ</h2>
+                            <Link href="/memos/1">
+                                <a><MemoCard
+                                    title="title 今日の反省"
+                                    date="日付 2012/12/12"
+                                    leadSentence="read 今日は..."
+                                /></a>
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            <h2 onClick={handleSwitch}>過去３０日間のメモ</h2>
 
-                        <Link href="/memos/1">
-                            <a> <MemoCard
-                                title="title 将来の夢"
-                                date="日付 2012/12/12"
-                                leadSentence="read 俺は..."
-                            /></a>
-                        </Link>
-                    </>
-                )
-            }
+                            <Link href="/memos/1">
+                                <a> <MemoCard
+                                    title="title 将来の夢"
+                                    date="日付 2012/12/12"
+                                    leadSentence="read 俺は..."
+                                /></a>
+                            </Link>
+                        </>
+                    )
+                }
+            </Layout>
         </>
     )
 }
