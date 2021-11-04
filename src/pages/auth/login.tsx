@@ -5,18 +5,14 @@ import style from '../../styles/Auth.module.css'
 import Button from '@material-ui/core/Button'
 
 interface inputValueInterface {
-    name: string;
     email: string;
     password: string;
-    passwordConfirmation: string;
 }
 
-const SignUp: NextPage = () => {
+const Login: NextPage = () => {
     const [state, setState] = useState<inputValueInterface>({
-        name: "",
         email: "",
         password: "",
-        passwordConfirmation: ""
     })
 
     const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -30,15 +26,6 @@ const SignUp: NextPage = () => {
     return (
         <>
             <div className={style.formWrapper}>
-                <div className={style.fieldWrapper}>
-                    <TextField
-                        id="standard-search"
-                        label="Name"
-                        name="name"
-                        value={state.name}
-                        onChange={event => handleInputChange(event)}
-                    />
-                </div>
                 <div className={style.fieldWrapper}>
                     <TextField
                         id="standard-search"
@@ -60,20 +47,9 @@ const SignUp: NextPage = () => {
                     />
                 </div>
                 <div className={style.fieldWrapper}>
-                    <TextField
-                        id="standard-password-input"
-                        label="Password Confirm"
-                        type="password"
-                        autoComplete="current-password"
-                        name="passwordConfirmation"
-                        value={state.passwordConfirmation}
-                        onChange={event => handleInputChange(event)}
-                    />
-                </div>
-                <div className={style.fieldWrapper}>
                     <Button variant="contained" type="submit"
                             onClick={handleSubmit}>
-                        Sign Up
+                        Login
                     </Button>
                 </div>
             </div>
@@ -83,4 +59,4 @@ const SignUp: NextPage = () => {
     )
 }
 
-export default SignUp
+export default Login
