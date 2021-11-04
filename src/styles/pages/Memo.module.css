@@ -1,11 +1,17 @@
 .memo {
-    width: 90vw;
-    height: 90vh;
     font-size: 1.1rem;
     padding: 1rem;
     float: left;
+    width: 90vw;
+    height: 90vh;
 }
 
+@media (max-width: 600px) {
+    .memo {
+        width: 100vw;
+        height: 100vh;
+    }
+}
 /*.center {*/
 /*    margin: 0 auto;*/
 /*    border: solid 1px;*/

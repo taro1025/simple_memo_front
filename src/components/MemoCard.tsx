@@ -1,4 +1,5 @@
 import React from 'react'
+import style from '../styles/components/MemoCard.module.css'
 
 interface Props {
     title: string
@@ -9,10 +10,12 @@ interface Props {
 export const MemoCard: React.FC<Props> = (props) => {
     return (
         <>
-            <div>
-                <h3>{props.title}</h3>
-                <span>{props.date}</span>
-                <span>{props.leadSentence}</span>
+            <div className={style.cardWrapper}>
+                <div className={style.card}>
+                    <h3>{props.title}</h3>
+                    <span className={style.readSentence}>{props.date}</span>
+                    <span className={style.readSentence}>{props.leadSentence}</span>
+                </div>
             </div>
         </>
     )

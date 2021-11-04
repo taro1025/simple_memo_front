@@ -1,0 +1,13 @@
+.cardWrapper {
+    width: 100vw;
+    height: 2rem;
+    line-height: 1px;
+}
+
+.card {
+    padding: 0 0 0 1rem;
+}
+
+.readSentence {
+    font-size: .85rem;
+}

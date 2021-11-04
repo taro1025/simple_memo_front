@@ -1,0 +1,12 @@
+.head {
+    justify-content: space-between;
+    display: flex;
+}
+
+.h2 {
+    padding: 0 0 0 1rem;
+}
+
+.newMemo {
+    padding: .3rem 1rem 0 0;
+}

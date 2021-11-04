@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import TextField from '@material-ui/core/TextField';
 import React, {useState} from "react"
-import style from '../../styles/Auth.module.css'
+import style from '../../styles/pages/Auth.module.css'
 import Button from '@material-ui/core/Button'
 
 interface inputValueInterface {

@@ -1,7 +1,7 @@
 import {NextPage} from 'next'
 import {MemoCard} from '../components/MemoCard'
 import Link from "next/link"
-import Head from 'next/head'
+import style from "../styles/pages/Index.module.css"
 import {useState} from "react"
 import {Layout} from '../components/layout'
 
@@ -46,7 +46,10 @@ const Index: NextPage = () => {
                 {
                     isCurrentMemoIndex ? (
                         <>
-                            <h2 onClick={handleSwitch}>メモ一覧</h2>
+                            <div className={style.head}>
+                                <h2 className={style.h2} onClick={handleSwitch}>メモ一覧</h2>
+                                <Link href="/memos/new"><span className={style.newMemo}>＋新規作成</span></Link>
+                            </div>
 
                             <Link href="/memos/1">
                                 <a><MemoCard
@@ -58,8 +61,10 @@ const Index: NextPage = () => {
                         </>
                     ) : (
                         <>
-                            <h2 onClick={handleSwitch}>過去３０日間のメモ</h2>
-
+                            <div className={style.head}>
+                                <h2 className={style.h2} onClick={handleSwitch}>過去３０日間のメモ</h2>
+                                <Link href="/memos/new"><span className={style.newMemo}>＋新規作成</span></Link>
+                            </div>
                             <Link href="/memos/1">
                                 <a> <MemoCard
                                     title="title 将来の夢"

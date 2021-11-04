@@ -1,5 +1,5 @@
 import {NextPage} from "next"
-import style from "../../styles/Memo.module.css"
+import style from "../../styles/pages/Memo.module.css"
 import Button from "@material-ui/core/Button"
 import Link from "next/link"
 import dynamic from "next/dynamic";
@@ -18,6 +18,7 @@ const NewMemo: NextPage = () => {
     }
 
     const handleClickSavePermanent = () => {
+        //現在、Localstrageにしか保存していないのでバックエンドがわのDBにも保存させる
         setPermanent(!isPermanent)
     }
 

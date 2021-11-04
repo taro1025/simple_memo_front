@@ -1,6 +1,6 @@
 {
   "name": "Simple Memo",
-  "short_name": "The memo",
+  "short_name": "Simple Memo",
   "theme_color": "#fff",
   "background_color": "#fff",
   "display": "standalone",

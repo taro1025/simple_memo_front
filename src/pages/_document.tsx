@@ -18,6 +18,7 @@ class MyDocument extends Document {
         return (
             <Html lang="ja-JP" dir="ltr">
                 <Head>
+                    <title>Simple Memo</title>
                     <meta name="theme-color" content="#f9a8d4" />
                     <link rel="manifest" href="/manifest.json" />
                 </Head>
