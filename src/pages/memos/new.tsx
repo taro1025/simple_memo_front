@@ -7,6 +7,7 @@ import {useStateWithStorage} from "../../hooks/use_state_with_storage";
 import {putMemo} from '../../indexedDB/memos'
 import {useState} from "react";
 import {Layout} from "../../components/layout";
+import {createMemo} from "../../apis/memos";
 
 //多分、MemoはComponentsに切り分けて、[id].js, new.jsで使えばいい気がする。
 const NewMemo: NextPage = () => {
@@ -14,6 +15,7 @@ const NewMemo: NextPage = () => {
     const [isPermanent, setPermanent] = useState<boolean>(false)
 
     const handleClickSubmit = () => {
+        createMemo(memo, isPermanent)
         putMemo('1', memo, isPermanent)
     }
 
