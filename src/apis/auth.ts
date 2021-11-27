@@ -1,19 +1,6 @@
 import axios from 'axios'
 import { signupUserUrl, refreshUrl, loginUrl, logoutUrl } from '../urls/index'
 
-export const signupUser = (email: string, password: string) => {
-    return axios.post(signupUserUrl,
-        {
-            email: email,
-            password: password
-        }, { withCredentials: true })
-        .then(res => {
-            console.log("成功")
-            return res.data
-        })
-        .catch((e) => console.log("登録失敗", e))
-}
-
 export const login = (email: string, password: string) => {
     return axios.post(loginUrl,
         {
