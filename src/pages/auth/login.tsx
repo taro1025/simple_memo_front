@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import React, {useState} from "react"
 import style from '../../styles/pages/Auth.module.css'
 import Button from '@material-ui/core/Button'
-
+import { login } from '../../apis/auth'
 interface inputValueInterface {
     email: string;
     password: string;
@@ -21,6 +21,7 @@ const Login: NextPage = () => {
 
     const handleSubmit = () => {
         //ユーザー作成のPOSTを投げる
+        login(state.email, state.password)
     }
 
     return (
