@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import React, {useState} from "react"
 import style from '../../styles/pages/Auth.module.css'
 import Button from '@material-ui/core/Button'
+import {createUser} from "../../apis/users";
 
 interface inputValueInterface {
     name: string;
@@ -25,20 +26,21 @@ const SignUp: NextPage = () => {
 
     const handleSubmit = () => {
         //ユーザー作成のPOSTを投げる
+        createUser(state.email, state.password)
     }
 
     return (
         <>
             <div className={style.formWrapper}>
-                <div className={style.fieldWrapper}>
-                    <TextField
-                        id="standard-search"
-                        label="Name"
-                        name="name"
-                        value={state.name}
-                        onChange={event => handleInputChange(event)}
-                    />
-                </div>
+                {/*<div className={style.fieldWrapper}>*/}
+                {/*    <TextField*/}
+                {/*        id="standard-search"*/}
+                {/*        label="Name"*/}
+                {/*        name="name"*/}
+                {/*        value={state.name}*/}
+                {/*        onChange={event => handleInputChange(event)}*/}
+                {/*    />*/}
+                {/*</div>*/}
                 <div className={style.fieldWrapper}>
                     <TextField
                         id="standard-search"
@@ -59,17 +61,17 @@ const SignUp: NextPage = () => {
                         onChange={event => handleInputChange(event)}
                     />
                 </div>
-                <div className={style.fieldWrapper}>
-                    <TextField
-                        id="standard-password-input"
-                        label="Password Confirm"
-                        type="password"
-                        autoComplete="current-password"
-                        name="passwordConfirmation"
-                        value={state.passwordConfirmation}
-                        onChange={event => handleInputChange(event)}
-                    />
-                </div>
+                {/*<div className={style.fieldWrapper}>*/}
+                {/*    <TextField*/}
+                {/*        id="standard-password-input"*/}
+                {/*        label="Password Confirm"*/}
+                {/*        type="password"*/}
+                {/*        autoComplete="current-password"*/}
+                {/*        name="passwordConfirmation"*/}
+                {/*        value={state.passwordConfirmation}*/}
+                {/*        onChange={event => handleInputChange(event)}*/}
+                {/*    />*/}
+                {/*</div>*/}
                 <div className={style.fieldWrapper}>
                     <Button variant="contained" type="submit"
                             onClick={handleSubmit}>

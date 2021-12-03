@@ -4,6 +4,7 @@ import Link from "next/link"
 import style from "../styles/pages/Index.module.css"
 import {useState} from "react"
 import {Layout} from '../components/layout'
+import {logout} from '../apis/auth'
 
 interface MemoInterface {
     title: string;
@@ -47,6 +48,7 @@ const Index: NextPage = () => {
                     isCurrentMemoIndex ? (
                         <>
                             <div className={style.head}>
+                                <button onClick={logout}>ログアウト</button>
                                 <h2 className={style.h2} onClick={handleSwitch}>メモ一覧</h2>
                                 <Link href="/memos/new"><span className={style.newMemo}>＋新規作成</span></Link>
                             </div>

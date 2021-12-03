@@ -37,3 +37,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 package-lock.json
+
+public/sw.js.map
