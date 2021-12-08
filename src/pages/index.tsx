@@ -2,20 +2,26 @@ import {NextPage} from 'next'
 import {MemoCard} from '../components/MemoCard'
 import Link from "next/link"
 import style from "../styles/pages/Index.module.css"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import {Layout} from '../components/layout'
 import {logout} from '../apis/auth'
+import {essentialMemos} from "../apis/memos";
 
 interface MemoInterface {
-    title: string;
+    ID: number;
+    UserID: number;
     text: string;
-    created_at: string;
-    updated_at: string;
+    CreatedAt: string;
+    UpdatedAt: string;
+    DeletedAt: string;
+    Text: string;
+    Discording: boolean;
+    Permanent: boolean;
 }
 
 interface IndexMemosInterface {
     currentMemos: MemoInterface[]; //今日書いたメモ+永久化してるメモ
-    pastMemos: MemoInterface[];
+    discordingMemos: MemoInterface[];
 }
 
 const Index: NextPage = () => {
@@ -41,41 +47,48 @@ const Index: NextPage = () => {
         switchMemoIndex(!isCurrentMemoIndex)
     }
 
+    useEffect(() => {
+        essentialMemos().then((res) => {
+            console.log(JSON.stringify(res, null, 4))
+            setMemoIndex(res.data)
+        })
+    }, [])
+
     return (
         <>
             <Layout>
+                <div className={style.head}>
+                    <button onClick={logout}>ログアウト</button>
+                    <h2 className={style.h2} onClick={handleSwitch}>{isCurrentMemoIndex ? 'メモ一覧' : '過去のメモ一覧'}</h2>
+                    <Link href="/memos/new"><span className={style.newMemo}>＋新規作成</span></Link>
+                </div>
                 {
-                    isCurrentMemoIndex ? (
-                        <>
-                            <div className={style.head}>
-                                <button onClick={logout}>ログアウト</button>
-                                <h2 className={style.h2} onClick={handleSwitch}>メモ一覧</h2>
-                                <Link href="/memos/new"><span className={style.newMemo}>＋新規作成</span></Link>
-                            </div>
-
-                            <Link href="/memos/1">
-                                <a><MemoCard
-                                    title="title 今日の反省"
-                                    date="日付 2012/12/12"
-                                    leadSentence="read 今日は..."
-                                /></a>
-                            </Link>
-                        </>
-                    ) : (
-                        <>
-                            <div className={style.head}>
-                                <h2 className={style.h2} onClick={handleSwitch}>過去３０日間のメモ</h2>
-                                <Link href="/memos/new"><span className={style.newMemo}>＋新規作成</span></Link>
-                            </div>
-                            <Link href="/memos/1">
-                                <a> <MemoCard
-                                    title="title 将来の夢"
-                                    date="日付 2012/12/12"
-                                    leadSentence="read 俺は..."
-                                /></a>
-                            </Link>
-                        </>
-                    )
+                    isCurrentMemoIndex ?
+                        memoIndex && memoIndex.currentMemos.map((memo: MemoInterface) => (
+                            <>
+                                <Link href={`/memos/${memo.ID}`}>
+                                    <a><MemoCard
+                                        title="title 今日の反省"
+                                        date={memo.Text}
+                                        leadSentence="read 今日は..."
+                                    /></a>
+                                </Link>
+                                {console.log(memo.Text)}
+                            </>
+                        ))
+                        :
+                        memoIndex && memoIndex.discordingMemos.map((memo: MemoInterface) => (
+                            <>
+                                <Link href={`/memos/${memo.ID}`}>
+                                    <a><MemoCard
+                                        title="title 今日の反省"
+                                        date={memo.Text}
+                                        leadSentence="read 今日は..."
+                                    /></a>
+                                </Link>
+                                {console.log(memo.Text)}
+                            </>
+                        ))
                 }
             </Layout>
         </>

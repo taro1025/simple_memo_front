@@ -26,7 +26,6 @@ export const logout = () => {
 export const refreshToken = (email: string, password: string) => {
     return axios.get(refreshUrl)
         .then(res => {
-            console.log("成功")
             return res.data
         })
         .catch((e) => console.log("登録失敗", e))
